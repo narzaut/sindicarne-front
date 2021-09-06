@@ -6,45 +6,37 @@
 #  \___/____/____/··
 #  ·················
 */
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
-
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap');
 /* -------------------------------------------  */
 html, body{
   margin:0;
   padding: 0;
-  font-family: 'Open Sans', sans-serif;
-  color: var(--black-color);
+	font-family: 'Titillium Web', sans-serif;
+	color: var(--black-color);
 	scroll-behavior: smooth;
 	scrollbar-color: grey var(--black-color);
 
 }
-
-/* ------------------------------------------- MAIN SECTION */
-
-.main_section{
-	position: relative;
-  height: 100vh;
-  min-height: 500px;
-  width: 100%;
-  background: #161415 url(../assets/header-background.jpg) no-repeat top center;
-  background-size: cover !important;
-	-webkit-background-size: cover !important;
-  text-align: center;
-  overflow: hidden;
-}
-
 
 .bg-gray{
 	background-color: #2B2B2B;
 }
 
 .bg-app-blue{
-	background: rgb(5,41,77);
-	background: linear-gradient(rgba(5,41,77,1) 0%, rgba(32,64,154,1) 48%, rgba(0,116,187,1) 100%);
+	background: linear-gradient(rgb(59, 120, 180) 0%, rgb(105, 169, 251) 48%, #9ad2ff);
+
 }
 
+/* 
+	orig. background: linear-gradient(rgba(5,41,77,1) 0%, rgba(32,64,154,1) 48%, rgba(0,116,187,1) 100%);
+	it 0. background: linear-gradient(rgb(28, 91, 153) 0%, rgb(93, 136, 255) 48%, rgb(37, 164, 243) 100%);
+	it 1. background: linear-gradient(rgb(73, 164, 255) 0%, rgb(123, 157, 251) 48%, #CCCCFF);
+	it 2. background: linear-gradient(rgb(38, 146, 253) 0%, rgb(89, 133, 255) 48%, #b6b6fb);
+	it 3. background: linear-gradient(rgb(23, 95, 168) 0%, rgb(79, 124, 246) 48%, #9a9aff);
+*/
+
 .bg-blue{
-	background: #0d1941;
+	background: #263d7c;
 }
 
 .bg-lightgray{
@@ -64,4 +56,18 @@ html, body{
 
 input[type="number"] {
 	-moz-appearance: textfield;
+}
+.others {
+	color:black
+}
+
+.glass{
+	background-color: rgba(0, 0, 0, 0.253);
+
+}
+
+.titillium-font{
+
+	font-family: 'Titillium Web', sans-serif;
+
 }

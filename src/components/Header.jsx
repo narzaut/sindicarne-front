@@ -2,8 +2,8 @@ import React from "react";
 
 export function Header() {
   return (
-		<div className='px-20 py-4 shadow-2xl w-full flex items-center justify-center '>
-			<img className='h-20' src={process.env.PUBLIC_URL + '/assets/logo.png'} />
+		<div className=' py-4  w-full flex items-center justify-center '>
+			<img className='w-3/4 md:w-2/4 lg:w-1/5' src={process.env.PUBLIC_URL + '/assets/logo.png'} />
 		</div>
     
   );
