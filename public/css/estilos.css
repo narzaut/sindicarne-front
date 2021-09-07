@@ -22,16 +22,16 @@ html, body{
 	background-color: #2B2B2B;
 }
 
-.bg-app-blue{
-	background: linear-gradient(rgb(59, 120, 180) 0%, rgb(105, 169, 251) 48%, #9ad2ff);
-
+.bg-header-blue{
+	background-color: #05294D;
 }
 
-/* 
-	orig. background: linear-gradient(rgba(5,41,77,1) 0%, rgba(32,64,154,1) 48%, rgba(0,116,187,1) 100%);
+.bg-app-blue{
+	background: linear-gradient(rgb(23, 95, 168) 0%, rgb(79, 124, 246) 30%, #CCCCFF);
+
+}/* 
+	orig. 
 	it 0. background: linear-gradient(rgb(28, 91, 153) 0%, rgb(93, 136, 255) 48%, rgb(37, 164, 243) 100%);
-	it 1. background: linear-gradient(rgb(73, 164, 255) 0%, rgb(123, 157, 251) 48%, #CCCCFF);
-	it 2. background: linear-gradient(rgb(38, 146, 253) 0%, rgb(89, 133, 255) 48%, #b6b6fb);
 	it 3. background: linear-gradient(rgb(23, 95, 168) 0%, rgb(79, 124, 246) 48%, #9a9aff);
 */
 
@@ -47,6 +47,23 @@ html, body{
 	text-shadow: 1px 1px 2px black;
 }
 
+.border-green{
+	border-color: #17a2b8;
+}
+
+.focus-border-green:focus{
+	border-color: #17a2b8;
+
+}
+
+.hover-bg-green:hover{
+	background-color:#138496;
+
+}
+
+.bg-green{
+	background-color:#17a2b8 ;
+}
 
 
 .hover-press-animation:hover{
