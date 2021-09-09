@@ -47,13 +47,24 @@ html, body{
 	text-shadow: 1px 1px 2px black;
 }
 
+.text-green{
+	color: #17a2b8;
+}
+
+.hide-input-cursor{
+	caret-color: transparent;
+}
+
 .border-green{
 	border-color: #17a2b8;
 }
 
 .focus-border-green:focus{
 	border-color: #17a2b8;
+}
 
+.hover-border-green:hover{
+	border-color: #17a2b8;
 }
 
 .hover-bg-green:hover{
@@ -65,7 +76,6 @@ html, body{
 	background-color:#17a2b8 ;
 }
 
-
 .hover-press-animation:hover{
 	transform: translateY(4px);
 	transition: all 0.1s ease-out;
@@ -74,17 +84,10 @@ html, body{
 input[type="number"] {
 	-moz-appearance: textfield;
 }
-.others {
-	color:black
-}
-
 .glass{
 	background-color: rgba(0, 0, 0, 0.253);
-
 }
 
 .titillium-font{
-
 	font-family: 'Titillium Web', sans-serif;
-
 }
