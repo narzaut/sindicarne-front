@@ -22,7 +22,7 @@ export function TextInput({type, errors, register, value, placeholder, required 
 	} else if (type == 'tel'){
 		reg = register(value, {required: {value:required, message:'* Campo requerido'}, pattern: {value:/^[0-9]+$/i, message:'* Número no válido'}, minLength: {value: 6, message:'* Número no válido'}, maxLength: {value: 12, message:'* Número no válido'}})
 	} else if (type == 'dni'){
-		reg = register(value, { required: {value: required, message:'* Campo requerido'}, pattern: {value:/^[0-9]+$/i, message:'* Error, recuerde ingresar solo números'}, minLength: {value: 7, message:'* Documento no válido'}, maxLength: {value: 8, message:'* Documento no válido'}})
+		reg = register(value, { required: {value: required, message:'* Campo requerido'}, pattern: {value:/^[0-9]+$/i, message:'* Recuerde ingresar solo los números'}, minLength: {value: 7, message:'* Documento no válido'}, maxLength: {value: 8, message:'* Documento no válido'}})
 		
 	} else{
 		reg = register(value, { required: {value: required, message:'* Campo requerido'}})
