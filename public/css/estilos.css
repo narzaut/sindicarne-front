@@ -30,6 +30,10 @@ html, body{
 	background-color: #214396;
 }
 
+.input-color{
+	background-color: #214396;
+}
+
 .bg-app-blue{
 	background: linear-gradient(rgb(23, 95, 168) 0%, rgb(79, 124, 246) 20%, #9a9aff);
 }/* 

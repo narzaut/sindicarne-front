@@ -11,14 +11,16 @@ import { SelectInput } from "./SelectInput";
 import { dateToSql } from "../helpers/dateToSql";
 
 export const InscriptionForm = () => {
+	registerLocale('es', es);
 	const { register, handleSubmit, formState: { errors } } = useForm({ criteriaMode: "all" });
 	const [startDate, setStartDate] = useState({
 		date: new Date(),
 		validated: false
 	});
-	registerLocale('es', es);
-
-
+	//Conditional css
+	let errorBorder;
+	startDate.date.getFullYear() > new Date().getFullYear() - 17  ? errorBorder=' focus:border-red-400' : errorBorder=' focus-border-green'
+	
 	const onSubmit = (data, e) => {
 		e.preventDefault();
 		//Full name build
@@ -67,7 +69,7 @@ export const InscriptionForm = () => {
 			value: 0
 		}
 	];
-
+	
 	return (
 		<div className='flex flex-col w-full  items-center justify-center pb-10 mt-6'>
 			<form className=' rounded-md glass card-shadow w-3/4 lg:w-1/2 py-4  lg:py-10  flex flex-col items-center justify-center' onSubmit={ handleSubmit(onSubmit)}>
@@ -83,7 +85,7 @@ export const InscriptionForm = () => {
 						: 
 							setStartDate({...startDate, validated:false})
 						}
-						key={'asd3'} dateFormat="dd/MM/yyyy" selected={startDate.date} className='outline-none border-4 border-transparent focus-border-green bg-blue-900 text-gray-100 rounded w-52  text-center' locale="es"  onChange={(date) => {setStartDate({...startDate, date:date})}}
+						key={'asd3'} dateFormat="dd/MM/yyyy" selected={startDate.date} className={`outline-none border-4 border-transparent focus-border-green input-color text-gray-100 rounded w-52  text-center ${errorBorder}`} locale="es"  onChange={(date) => {setStartDate({...startDate, date:date})}}
 					/>
 					{startDate.date.getFullYear() > new Date().getFullYear() - 17  ? <p className='text-left pt-1  text-xs text-red-500 font-bold'>* Debe ser mayor de 17 años</p> : ''}
 				</div>
