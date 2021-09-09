@@ -34,6 +34,7 @@ export const InscriptionForm = () => {
 		//If age is validated then POST form to DB
 		if (startDate.validated == true) {
 			data.fechaNacimiento  = dateToSql(startDate.date);
+			const fechaIngreso = dateToSql(new Date())
 			fetch(`http://localhost:3001/add`, {
 				method: 'POST',
 				headers: {
@@ -42,7 +43,7 @@ export const InscriptionForm = () => {
 				body: JSON.stringify({
 					nombrePostulante: data.nombrePostulante,
 					dniPostulante: data.dniPostulante,
-					fingresoPostulante: "2008-11-11",
+					fingresoPostulante: fechaIngreso,
 					fnacimientoPostulante: data.fechaNacimiento,
 					estadocivil: parseInt(data.estadocivil),
 					empresaPostulante: data.empresaPostulante.trim(),
