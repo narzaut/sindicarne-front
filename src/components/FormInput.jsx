@@ -4,7 +4,7 @@ export function TextInput({type, errors, register, value, placeholder, required 
 	const [error, setError] = useState('')
 	/* Validation based on prop 'type' */
 	let reg;
-
+	let errorBorder;
 	useEffect(() => {
 		if (errors){
 			errors.types.pattern ?
@@ -13,10 +13,9 @@ export function TextInput({type, errors, register, value, placeholder, required 
 				setError(errors.message)
 		} else {
 			setError('')
-		}
-		
+		}	
 	}, [errors])
-
+	errors ? errorBorder = ' focus:border-red-400' : errorBorder = ' focus-border-green'
 	if (type == 'email'){
 		reg = register(value, {required: {value:required, message:'* Campo requerido'}, pattern: {value:/^\S+@\S+$/i, message:'* Email inválido'}})
 	} else if (type == 'tel'){
@@ -32,14 +31,10 @@ export function TextInput({type, errors, register, value, placeholder, required 
 		<div className='flex py-2 flex-col'>
 			<input 
 				{...reg}
-				className='hide-input-cursor  w-52 placeholder-gray-400 text-gray-100 border-transparent focus:outline-none border-4 focus-border-green  bg-blue-900 outline-none rounded  text-center'
+				className={`hide-input-cursor  w-52 placeholder-gray-400 text-gray-100 border-transparent focus:outline-none border-4   bg-blue-900 outline-none rounded  text-center  ${errorBorder}`}
 				autoComplete={'off'}
-				placeholder={placeholder}
-				
-				
+				placeholder={placeholder}		
 			/>
-			
-			
 			<p className='pt-1 pl-1 text-xs text-red-500 font-bold'>{error}</p>
 		</div>
   );

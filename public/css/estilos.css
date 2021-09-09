@@ -23,11 +23,15 @@ html, body{
 }
 
 .bg-header-blue{
-	background-color: #05294D;
+	background-color: #003560;
+}
+
+.bg-footer-blue{
+	background-color: #214396;
 }
 
 .bg-app-blue{
-	background: linear-gradient(rgb(23, 95, 168) 0%, rgb(79, 124, 246) 50%, #CCCCFF);
+	background: #214396;
 
 }/* 
 	orig. 
@@ -48,7 +52,7 @@ html, body{
 }
 
 .text-green{
-	color: #17a2b8;
+	color: #2594BC;
 }
 
 .hide-input-cursor{
@@ -56,24 +60,24 @@ html, body{
 }
 
 .border-green{
-	border-color: #17a2b8;
+	border-color: #2594BC;
 }
 
 .focus-border-green:focus{
-	border-color: #17a2b8;
+	border-color: #2594BC;
 }
 
 .hover-border-green:hover{
-	border-color: #17a2b8;
+	border-color: #2594BC;
 }
 
 .hover-bg-green:hover{
-	background-color:#138496;
+	background-color:#2594BC;
 
 }
 
 .bg-green{
-	background-color:#17a2b8 ;
+	background-color:#2594BC ;
 }
 
 .hover-press-animation:hover{
@@ -85,9 +89,13 @@ input[type="number"] {
 	-moz-appearance: textfield;
 }
 .glass{
-	background-color: rgba(0, 0, 0, 0.253);
+	background-color: rgba(0, 0, 0, 0.180);
 }
 
 .titillium-font{
 	font-family: 'Titillium Web', sans-serif;
+}
+
+.card-shadow{
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
