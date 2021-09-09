@@ -21,7 +21,6 @@ export const InscriptionForm = () => {
 
 	const onSubmit = (data, e) => {
 		e.preventDefault();
-		e.target[0].value = ''
 		//Full name build
 		data.nombrePostulante = data.nombrePostulante.trim() + ' ' + data.apellido.trim();
 		//Validate user age
@@ -92,7 +91,7 @@ export const InscriptionForm = () => {
     		<TextInput type={'tel'} key={'asd5'} value='telPostulante' errors={errors.telPostulante}  placeholder='Teléfono / Celular' register={register} required={true}/>
     		<TextInput key={'asd6'} value='empresaPostulante' errors={errors.empresaPostulante} placeholder='Empresa' register={register} required={true} />
 				<SelectInput key={'asd7'} options={grupoFamiliarOptions} placeholder='Grupo familiar' value='estadocivil' errors={errors.estadocivil} register={register} required={true} />
-				<button  className='tracking-wider bg-gradient-to-t from-green-300 to-blue-500 cursor-pointer text-shadow transition mt-4 hover-bg-green rounded  px-4 py-2 bg-green text-gray-100 font-semibold hover-press-animation hover:shadow-2xl' type="submit">INSCRIBIRSE</button>
+				<button onClick={e => console.log(e)} className='tracking-wider bg-gradient-to-t from-green-300 to-blue-500 cursor-pointer text-shadow transition mt-4 hover-bg-green rounded  px-4 py-2 bg-green text-gray-100 font-semibold hover-press-animation hover:shadow-2xl' type="submit">INSCRIBIRSE</button>
     	</form>
 		</div>
 	)

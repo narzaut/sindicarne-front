@@ -31,10 +31,10 @@ html, body{
 }
 
 .bg-app-blue{
-	background: #214396;
-
+	background: linear-gradient(rgb(23, 95, 168) 0%, rgb(79, 124, 246) 20%, #9a9aff);
 }/* 
-	orig. 
+	
+	azul marino. #214396;
 	it 0. background: linear-gradient(rgb(28, 91, 153) 0%, rgb(93, 136, 255) 48%, rgb(37, 164, 243) 100%);
 	it 3. background: linear-gradient(rgb(23, 95, 168) 0%, rgb(79, 124, 246) 48%, #9a9aff);
 */
