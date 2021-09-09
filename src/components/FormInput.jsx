@@ -1,8 +1,21 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 export function TextInput({type, errors, register, value, placeholder, required }) {
+	const [error, setError] = useState('')
 	/* Validation based on prop 'type' */
 	let reg;
+
+	useEffect(() => {
+		if (errors){
+			errors.types.pattern ?
+				setError(errors.types.pattern)
+			:
+				setError(errors.message)
+		} else {
+			setError('')
+		}
+		
+	}, [errors])
 
 	if (type == 'email'){
 		reg = register(value, {required: {value:required, message:'* Campo requerido'}, pattern: {value:/^\S+@\S+$/i, message:'* Email inválido'}})
@@ -26,8 +39,9 @@ export function TextInput({type, errors, register, value, placeholder, required 
 				onBlur={e => (e.target.placeholder=placeholder)}
 				
 			/>
-			{errors?.message && <p className='text-shadow pt-1 pl-1 text-xs text-red-500 font-bold'>{errors?.message}</p>}
-			{console.log(errors)}
+			
+			
+			<p className='text-shadow pt-1 pl-1 text-xs text-red-500 font-bold'>{error}</p>
 		</div>
   );
 }
