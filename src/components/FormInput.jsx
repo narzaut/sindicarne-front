@@ -4,7 +4,7 @@ export function TextInput({type, errors, register, value, placeholder, required 
 	const [error, setError] = useState('')
 	//Conditional css
 	let errorBorder;
-	errors ? errorBorder = ' focus:border-red-400' : errorBorder = ' focus-border-green'
+	errors ? errorBorder = ' focus:border-red-500' : errorBorder = ' focus-border-green'
 	
 	//Select error message
 	useEffect(() => {

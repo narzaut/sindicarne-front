@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 //Date Picker
 import DatePicker from "react-datepicker";
@@ -17,24 +17,31 @@ export const InscriptionForm = () => {
 		date: new Date(),
 		validated: false
 	});
+	const [disabled, setDisabled] = useState(false)
+	const [success, setSuccess] = useState(false)
+	const [error, setError] = useState(false)
 	//Conditional css
 	let errorBorder;
-	startDate.date.getFullYear() > new Date().getFullYear() - 17  ? errorBorder=' focus:border-red-400' : errorBorder=' focus-border-green'
+	startDate.date.getFullYear() > new Date().getFullYear() - 17  ? errorBorder=' focus:border-red-500' : errorBorder=' focus-border-green'
 	
 	const onSubmit = (data, e) => {
 		e.preventDefault();
+		
 		//Full name build
 		data.nombrePostulante = data.nombrePostulante.trim() + ' ' + data.apellido.trim();
 		//Validate user age
+		
 		if (startDate.date.getFullYear() <= new Date().getFullYear() - 17) {
 			setStartDate({...startDate, validated:true});
 		} else{
 			setStartDate({...startDate, validated:false});
 		};
+
 		//If age is validated then POST form to DB
-		if (startDate.validated == true) {
+		if (startDate.validated) {
 			data.fechaNacimiento  = dateToSql(startDate.date);
 			const fechaIngreso = dateToSql(new Date())
+			setDisabled(true)
 			fetch(`http://localhost:3001/add`, {
 				method: 'POST',
 				headers: {
@@ -53,11 +60,42 @@ export const InscriptionForm = () => {
 				})	
 			})
 			.then(response => response.json())
-			.then(json => console.log(json))
-			.catch(function(error) {
-				console.log(error);
+			.then(json => {
+				console.log('added to database')
+				setSuccess(true)
+				setError(false)
+
+				fetch(`http://localhost:3001/send-email`, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify({
+						nombrePostulante: data.nombrePostulante,
+						dniPostulante: data.dniPostulante,
+						empresaPostulante: data.empresaPostulante.trim(),
+						telPostulante: data.telPostulante,
+						emailPostulante: data.emailPostulante.trim()
+					})	
+				})
+				.then(response => response.json())
+				.then(json => {})
+			
+			})
+			.catch(() => {
+				setDisabled(false)
+				setSuccess(false)
+				setError(true)
 			});
-		}	
+					
+		}	else {
+			setSuccess(false)
+			setError(false)
+			setDisabled(false)
+
+		}
+		setTimeout(() => setDisabled(false), 1000)
+
 	}
 
 	const grupoFamiliarOptions = [
@@ -94,8 +132,30 @@ export const InscriptionForm = () => {
     		<TextInput type={'tel'} key={'asd5'} value='telPostulante' errors={errors.telPostulante}  placeholder='Teléfono / Celular' register={register} required={true}/>
     		<TextInput key={'asd6'} value='empresaPostulante' errors={errors.empresaPostulante} placeholder='Empresa' register={register} required={true} />
 				<SelectInput key={'asd7'} options={grupoFamiliarOptions} placeholder='Grupo familiar' value='estadocivil' errors={errors.estadocivil} register={register} required={true} />
-				<button onClick={e => console.log(e)} className='tracking-wider bg-gradient-to-t from-green-300 to-blue-500 cursor-pointer text-shadow transition mt-4 hover-bg-green rounded  px-4 py-2 bg-green text-gray-100 font-semibold hover-press-animation hover:shadow-2xl' type="submit">INSCRIBIRSE</button>
-    	</form>
+				<button disabled = {disabled}  className='tracking-wider bg-gradient-to-t from-green-300 to-blue-500 cursor-pointer text-shadow transition mt-4 hover-bg-green rounded  px-4 py-2 bg-green text-gray-100 font-semibold hover-press-animation hover:shadow-2xl' type="submit">INSCRIBIRSE</button>
+				{success == true ? <p>SE COMPLETÓ EL REGISTRO</p> : ''}
+				{error == true ? <p> Hubo un error con su registro. Intente más tarde.</p> : ''}
+			</form>
 		</div>
 	)
 }
+
+/* send mail
+
+fetch(`http://localhost:3001/send-email`, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify({
+						nombrePostulante: data.nombrePostulante,
+						dniPostulante: data.dniPostulante,
+						empresaPostulante: data.empresaPostulante.trim(),
+						telPostulante: data.telPostulante,
+						emailPostulante: data.emailPostulante.trim()
+					})	
+				})
+				.then(response => response.json())
+				.then(json => console.log(json, 'Mail enviado'))
+
+				*/
