@@ -8,7 +8,12 @@ import { registerLocale } from  "react-datepicker";
 //Custom components
 import { TextInput } from "./FormInput";
 import { SelectInput } from "./SelectInput";
+//Helpers
 import { dateToSql } from "../helpers/dateToSql";
+import { authenticate } from "../helpers/authenticate"
+import { validateAge } from "../helpers/validateAge"
+import { postRequest } from "../helpers/postRequest";
+import { emailRequest } from "../helpers/emailRequest"
 
 export const InscriptionForm = () => {
 	registerLocale('es', es);
@@ -18,84 +23,58 @@ export const InscriptionForm = () => {
 		validated: false
 	});
 	const [disabled, setDisabled] = useState(false)
-	const [success, setSuccess] = useState(false)
-	const [error, setError] = useState(false)
+	const [message, setMessage] = useState({
+		status:false,
+		success:false,
+		message:''
+	})
+
 	//Conditional css
 	let errorBorder;
+	let messageStyle;
 	startDate.date.getFullYear() > new Date().getFullYear() - 17  ? errorBorder=' focus:border-red-500' : errorBorder=' focus-border-green'
-	
-	const onSubmit = (data, e) => {
+	message.success == true ? messageStyle = 'font-bold text-green-400' : messageStyle = 'pt-4 text-sm lg:text-lg font-bold text-red-400'
+	//Submit event handler
+	const onSubmit = async (data, e) => {
 		e.preventDefault();
-		
+		setMessage({message, status:false})
 		//Full name build
 		data.nombrePostulante = data.nombrePostulante.trim() + ' ' + data.apellido.trim();
-		//Validate user age
-		
-		if (startDate.date.getFullYear() <= new Date().getFullYear() - 17) {
-			setStartDate({...startDate, validated:true});
-		} else{
-			setStartDate({...startDate, validated:false});
-		};
-
-		//If age is validated then POST form to DB
-		if (startDate.validated) {
-			data.fechaNacimiento  = dateToSql(startDate.date);
-			const fechaIngreso = dateToSql(new Date())
+		//Validate user age 
+		const fechaNacimiento = validateAge(startDate)
+		if (fechaNacimiento.validated) {
+			data.fechaNacimiento = dateToSql(fechaNacimiento.date)
 			setDisabled(true)
-			fetch(`http://localhost:3001/add`, {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify({
-					nombrePostulante: data.nombrePostulante,
-					dniPostulante: data.dniPostulante,
-					fingresoPostulante: fechaIngreso,
-					fnacimientoPostulante: data.fechaNacimiento,
-					estadocivil: parseInt(data.estadocivil),
-					empresaPostulante: data.empresaPostulante.trim(),
-					activoPostulante: 1,
-					telPostulante: data.telPostulante,
-					emailPostulante: data.emailPostulante.trim()
-				})	
-			})
-			.then(response => response.json())
-			.then(json => {
-				console.log('added to database')
-				setSuccess(true)
-				setError(false)
-
-				fetch(`http://localhost:3001/send-email`, {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json',
-					},
-					body: JSON.stringify({
-						nombrePostulante: data.nombrePostulante,
-						dniPostulante: data.dniPostulante,
-						empresaPostulante: data.empresaPostulante.trim(),
-						telPostulante: data.telPostulante,
-						emailPostulante: data.emailPostulante.trim()
-					})	
+			//Validate token
+			const token = await authenticate()
+			if (token) {
+				//Post to db
+				postRequest(token, data)
+				.then(response => {return response.json() })
+				.then(json => {
+					if (json.status == 200){
+						//Send email
+						setMessage({message, success: true, status:true, message:'Se ha realizado la inscripción.'})
+						emailRequest(data)
+						.then(response => {return response.json()})
+						.then(json => {
+							console.log(json.message)
+						})
+					}else if (json.status==400){
+						setMessage({message, success: false, status:true, message:'Esta persona ya se encuentra inscripta.'})
+					}
+					console.log(json.message)
 				})
-				.then(response => response.json())
-				.then(json => {})
-			
-			})
-			.catch(() => {
-				setDisabled(false)
-				setSuccess(false)
-				setError(true)
-			});
+				.catch(error => {
 					
+				})
+			} else{
+				setMessage({message, success:false,  status:true, message:'Hubo un error en el registro. Intente más tarde.'})
+			}
 		}	else {
-			setSuccess(false)
-			setError(false)
 			setDisabled(false)
-
 		}
-		setTimeout(() => setDisabled(false), 1000)
-
+		setTimeout(() => setDisabled(false), 1500)
 	}
 
 	const grupoFamiliarOptions = [
@@ -111,7 +90,8 @@ export const InscriptionForm = () => {
 	
 	return (
 		<div className='flex flex-col w-full  items-center justify-center pb-10 mt-6'>
-			<form className=' rounded-md glass card-shadow w-3/4 lg:w-1/2 py-4  lg:py-10  flex flex-col items-center justify-center' onSubmit={ handleSubmit(onSubmit)}>
+		
+			<form onChange={() => {setMessage({message, status:false})}} className=' rounded-md glass card-shadow w-3/4 lg:w-1/2 py-4  lg:py-10  flex flex-col items-center justify-center' onSubmit={ handleSubmit(onSubmit)}>
 				<p className='mb-2 lg:mb-6 lg:text-lg text-gray-100  font-bold border-b-4 border-green rounded max-w-max'>Formulario de inscripción</p>
     		<TextInput key={'asd'} value='nombrePostulante' errors={errors.nombrePostulante}  placeholder='Nombre' register={register} required={true}/>
     		<TextInput key={'asd1'} value='apellido' errors={errors.apellido} placeholder='Apellido' register={register}  required={true}/>
@@ -133,29 +113,8 @@ export const InscriptionForm = () => {
     		<TextInput key={'asd6'} value='empresaPostulante' errors={errors.empresaPostulante} placeholder='Empresa' register={register} required={true} />
 				<SelectInput key={'asd7'} options={grupoFamiliarOptions} placeholder='Grupo familiar' value='estadocivil' errors={errors.estadocivil} register={register} required={true} />
 				<button disabled = {disabled}  className='tracking-wider bg-gradient-to-t from-green-300 to-blue-500 cursor-pointer text-shadow transition mt-4 hover-bg-green rounded  px-4 py-2 bg-green text-gray-100 font-semibold hover-press-animation hover:shadow-2xl' type="submit">INSCRIBIRSE</button>
-				{success == true ? <p>SE COMPLETÓ EL REGISTRO</p> : ''}
-				{error == true ? <p> Hubo un error con su registro. Intente más tarde.</p> : ''}
+				{message.status == true ? <p className={`${messageStyle}`}>{message.message}</p> : ''}
 			</form>
 		</div>
 	)
 }
-
-/* send mail
-
-fetch(`http://localhost:3001/send-email`, {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json',
-					},
-					body: JSON.stringify({
-						nombrePostulante: data.nombrePostulante,
-						dniPostulante: data.dniPostulante,
-						empresaPostulante: data.empresaPostulante.trim(),
-						telPostulante: data.telPostulante,
-						emailPostulante: data.emailPostulante.trim()
-					})	
-				})
-				.then(response => response.json())
-				.then(json => console.log(json, 'Mail enviado'))
-
-				*/
