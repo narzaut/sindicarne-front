@@ -1,7 +1,7 @@
 
 export const emailRequest = (data) => {
 	return (
-		fetch(`https://sindicarne-form-api.herokuapp.com/api/send-email`, {
+		fetch(`http://64.225.47.18:3030/api/send-email`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',

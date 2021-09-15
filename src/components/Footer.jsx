@@ -2,7 +2,7 @@ import React from "react";
 
 export function Footer() {
   return (
-		<div className='divide-y-2 text-center gap-4  lg:text-lg bg-header-blue py-4 w-full flex flex-col text-gray-300 font-medium items-center justify-center '>	
+		<div className='border-t-4 border-green divide-y-2 text-center gap-4  lg:text-lg bg-header-blue py-4 w-full flex flex-col text-gray-300 font-medium items-center justify-center '>	
 			<div className='gap-4 '>
 				<p>Sindicato de la Carne Río Cuarto</p>
 				<p>Lavalle 992, Esq. Bolivar - Río Cuarto - Córdoba</p>

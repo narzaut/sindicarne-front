@@ -31,11 +31,11 @@ html, body{
 }
 
 .input-color{
-	background-color: #214396;
+	background-color: #c3c3ce;
 }
 
 .bg-app-blue{
-	background: linear-gradient(rgb(23, 95, 168) 0%, rgb(79, 124, 246) 20%, #9a9aff);
+	background: linear-gradient(#cac8d4 0%,#dedeeb 50%, #fbfcff 100%);
 }/* 
 	
 	azul marino. #214396;
@@ -93,7 +93,7 @@ input[type="number"] {
 	-moz-appearance: textfield;
 }
 .glass{
-	background-color: rgba(0, 0, 0, 0.180);
+	background-color: rgba(255, 255, 255, 0.63);
 }
 
 .titillium-font{
