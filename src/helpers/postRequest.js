@@ -2,7 +2,7 @@ import { dateToSql } from "./dateToSql";
 
 export const postRequest = (token, data) => {
 	return (
-		fetch(`http://64.225.47.18:3030/api/postulantes`, {
+		fetch(`//64.225.47.18:3030/api/postulantes`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
