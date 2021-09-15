@@ -2,7 +2,7 @@ import { dateToSql } from "./dateToSql";
 
 export const postRequest = (token, data) => {
 	return (
-		fetch(`http://localhost:3001/api/postulantes`, {
+		fetch(`https://sindicarne-form-api.herokuapp.com/api/postulantes`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',

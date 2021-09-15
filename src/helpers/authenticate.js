@@ -1,7 +1,7 @@
 export const authenticate = async () => {
 	let token;
 
-	await fetch(`http://localhost:3001/api/auth`, {
+	await fetch(`https://sindicarne-form-api.herokuapp.com/api/auth`, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
