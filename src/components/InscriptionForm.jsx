@@ -87,7 +87,7 @@ export const InscriptionForm = () => {
 	return (
 		<div className='flex flex-col w-full  items-center justify-center pb-10 mt-6'>
 		
-			<form onChange={() => {setMessage({message, status:false})}} className=' rounded-md glass card-shadow w-3/4 lg:w-1/2 py-4  lg:py-10  flex flex-col items-center justify-center ' onSubmit={ handleSubmit(onSubmit)}>
+			<form onChange={() => {setMessage({message, status:false})}} className='mt-10 rounded-md glass card-shadow w-3/4 lg:w-1/2 py-4  lg:py-10  flex flex-col items-center justify-center ' onSubmit={ handleSubmit(onSubmit)}>
 				<p className='mb-2 lg:mb-6 lg:text-lg text-gray-800  font-bold border-b-4 border-green rounded max-w-max'>Formulario de inscripción</p>
     		<TextInput icon={'fas fa-user'} key={'asd'} value='nombrePostulante' errors={errors.nombrePostulante}  placeholder='Nombre' register={register} required={true}/>
     		<TextInput icon={'fas fa-user'} key={'asd1'} value='apellido' errors={errors.apellido} placeholder='Apellido' register={register}  required={true}/>
@@ -97,7 +97,7 @@ export const InscriptionForm = () => {
     		<TextInput icon={'fas fa-phone-alt'} type={'tel'} key={'asd5'} value='telPostulante' errors={errors.telPostulante}  placeholder='Teléfono / Celular' register={register} required={true}/>
     		<TextInput icon={'fas fa-building'} key={'asd6'} value='empresaPostulante' errors={errors.empresaPostulante} placeholder='Empresa' register={register} required={true} />
 				<SelectInput icon={'fas fa-users'} placer={'Grupo familiar'} key={'asd7'} options={grupoFamiliarOptions} placeholder='Grupo familiar' value='estadocivil' errors={errors.estadocivil} register={register} required={true} />				
-				<button disabled = {disabled}  className='tracking-wider  cursor-pointer text-shadow transition mt-4 hover-bg-green rounded  px-4 py-2 bg-green text-gray-100 font-semibold hover-press-animation hover:shadow-2xl' type="submit">INSCRIBIRSE</button>
+				<button disabled = {disabled}  className='tracking-wider  cursor-pointer text-shadow transition hover-bg-green rounded  px-4 py-2 bg-green text-gray-100 font-semibold hover-press-animation hover:shadow-2xl' type="submit">INSCRIBIRSE</button>
 				{message.status == true ? <p className={`${messageStyle}`}>{message.message}</p> : ''}
 			</form>
 		</div>

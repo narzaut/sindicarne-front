@@ -43,7 +43,7 @@ export function TextInput({icon, type, errors, register, value, placeholder, req
 					/>
 				</div>
 			</div>
-			<p className='pt-1 pl-1 text-xs text-red-500 font-bold'>{error ? <span><i class="fas fa-exclamation-circle"></i> {error}</span>  : ''}</p>
+			<p className='pt-1 pl-1 text-xs text-red-500 font-bold '>{error ? <span><i class="fas fa-exclamation-circle"></i> {error}</span>  : ''}</p>
 		</div>
   );
 }
