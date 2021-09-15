@@ -1,5 +1,6 @@
 {
   "name": "sindicarne-front",
+	"homepage": "https://narzaut.github.io/sindicarne-form",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -12,9 +13,12 @@
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.14.2",
     "react-scripts": "4.0.3",
+    "save-dev": "^0.0.1-security",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
+		"predeploy": "npm run build",
+		"deploy": "gh-pages -d build",
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
@@ -41,6 +45,7 @@
   "devDependencies": {
     "autoprefixer": "^9.8.6",
     "postcss": "^7.0.36",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.9"
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.9",
+		"gh-pages": "^3.2.3"
   }
 }
