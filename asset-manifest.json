@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/sindicarne-form/static/css/main.75cf0604.chunk.css",
-    "main.js": "/sindicarne-form/static/js/main.deed3c1c.chunk.js",
-    "main.js.map": "/sindicarne-form/static/js/main.deed3c1c.chunk.js.map",
-    "runtime-main.js": "/sindicarne-form/static/js/runtime-main.734cc90c.js",
-    "runtime-main.js.map": "/sindicarne-form/static/js/runtime-main.734cc90c.js.map",
-    "static/css/2.169d8ab9.chunk.css": "/sindicarne-form/static/css/2.169d8ab9.chunk.css",
-    "static/js/2.c8349d1b.chunk.js": "/sindicarne-form/static/js/2.c8349d1b.chunk.js",
-    "static/js/2.c8349d1b.chunk.js.map": "/sindicarne-form/static/js/2.c8349d1b.chunk.js.map",
-    "index.html": "/sindicarne-form/index.html",
-    "static/css/2.169d8ab9.chunk.css.map": "/sindicarne-form/static/css/2.169d8ab9.chunk.css.map",
-    "static/css/main.75cf0604.chunk.css.map": "/sindicarne-form/static/css/main.75cf0604.chunk.css.map",
-    "static/js/2.c8349d1b.chunk.js.LICENSE.txt": "/sindicarne-form/static/js/2.c8349d1b.chunk.js.LICENSE.txt"
+    "main.css": "/sindicarne-front/static/css/main.75cf0604.chunk.css",
+    "main.js": "/sindicarne-front/static/js/main.e01abf54.chunk.js",
+    "main.js.map": "/sindicarne-front/static/js/main.e01abf54.chunk.js.map",
+    "runtime-main.js": "/sindicarne-front/static/js/runtime-main.f2fd9e34.js",
+    "runtime-main.js.map": "/sindicarne-front/static/js/runtime-main.f2fd9e34.js.map",
+    "static/css/2.169d8ab9.chunk.css": "/sindicarne-front/static/css/2.169d8ab9.chunk.css",
+    "static/js/2.c8349d1b.chunk.js": "/sindicarne-front/static/js/2.c8349d1b.chunk.js",
+    "static/js/2.c8349d1b.chunk.js.map": "/sindicarne-front/static/js/2.c8349d1b.chunk.js.map",
+    "index.html": "/sindicarne-front/index.html",
+    "static/css/2.169d8ab9.chunk.css.map": "/sindicarne-front/static/css/2.169d8ab9.chunk.css.map",
+    "static/css/main.75cf0604.chunk.css.map": "/sindicarne-front/static/css/main.75cf0604.chunk.css.map",
+    "static/js/2.c8349d1b.chunk.js.LICENSE.txt": "/sindicarne-front/static/js/2.c8349d1b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.734cc90c.js",
+    "static/js/runtime-main.f2fd9e34.js",
     "static/css/2.169d8ab9.chunk.css",
     "static/js/2.c8349d1b.chunk.js",
     "static/css/main.75cf0604.chunk.css",
-    "static/js/main.deed3c1c.chunk.js"
+    "static/js/main.e01abf54.chunk.js"
   ]
 }
