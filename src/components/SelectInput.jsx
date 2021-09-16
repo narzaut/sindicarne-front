@@ -6,16 +6,16 @@ export function SelectInput({icon, options, placeholder, errors, register, value
 	errors ? errorBorder = ' focus:border-red-400' : errorBorder = ' focus-border-green'
 	
 	return (
-		<div className='py-3'>
+		<div className='py-3 '>
 			<p>{placeholder}</p>
-			<div className='flex  pb-10 flex-col  '>
-				<div className='relative '>
+			<div className='flex  pb-4 flex-col text-center  '>
+				<div className={'relative '}>
 					<i class={"text-gray-700 absolute top-1/2 transform -translate-y-1/2 left-3 " + icon}></i>
 					<select 
-						className={`w-52 py-1 text-center text-gray-800 font-semibold border-4 border-transparent input-color  rounded  pl-2 ${errorBorder}`}
+						className={`w-60 py-1 flex text-center  mx-auto text-gray-800 font-semibold border-4 border-transparent input-color  rounded  pl-2 ${errorBorder}`}
 						{...register(value, { required: required })}
 					>
-						<option value='' hidden selected></option>
+						<option  value='' hidden selected></option>
 						{options.map(option => {
 							return <option value={option.value}>{option.option}</option>
 						})}

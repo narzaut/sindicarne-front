@@ -11,7 +11,7 @@ export const emailRequest = (data) => {
 				dniPostulante: data.dniPostulante,
 				empresaPostulante: data.empresaPostulante.trim(),
 				telPostulante: data.telPostulante,
-				emailPostulante: data.emailPostulante.trim()
+				emailPostulante: data.emailPostulante.trim().toLowerCase()
 			})	
 		})
 	)	

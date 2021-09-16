@@ -17,7 +17,7 @@ export const postRequest = (token, data) => {
 				empresaPostulante: data.empresaPostulante.trim(),
 				activoPostulante: 1,
 				telPostulante: data.telPostulante,
-				emailPostulante: data.emailPostulante.trim()
+				emailPostulante: data.emailPostulante.trim().toLowerCase()
 			})	
 		})
 	)	
