@@ -32,19 +32,18 @@ export function TextInput({icon, type, errors, register, value, placeholder, req
 	
 	return (
 		<div className='py-3'>
+			<label className='flex flex-col' for={value}>{placeholder}</label>
+
 			<div className='flex  flex-col relative'>
 				<i class={"text-gray-700 absolute top-1/2 transform -translate-y-1/2 left-3 " + icon}></i>
 				<div className='w-full'>
 					<div className='flex'>
-						<label className='flex flex-col'>
-							{placeholder}
-							<input
-								name={value}
-								{...reg}
-								className={`py-1 px-8 font-semibold hide-input-cursor  w-60 placeholder-gray-400 text-gray-800 border-transparent focus:outline-none border-4 input-color outline-none rounded text-base text-center  ${errorBorder}`}
-								autoComplete={'off'}
-							/>
-						</label>
+						<input
+							id={value}
+							{...reg}
+							className={`py-1 px-8 font-semibold hide-input-cursor  w-60 placeholder-gray-400 text-gray-800 border-transparent focus:outline-none border-4 input-color outline-none rounded text-base text-center  ${errorBorder}`}
+							autoComplete={'off'}
+						/>
 					</div>
 					
 				</div>
