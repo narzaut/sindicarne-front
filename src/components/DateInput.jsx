@@ -14,10 +14,11 @@ export function DateInput({icon, startDate, setStartDate}) {
 	let errorBorder = fechaNacimiento.validated == false ? ' focus:border-red-400' : ' focus-border-green'
 	return (
 		<div className='pt-2'>
-			<p>Fecha de nacimiento</p>
+			<label for='fnacimiento'>Fecha de nacimiento</label>
 			<div className='relative'>
 				<i class={"z-10 text-gray-700 absolute top-1/2 transform -translate-y-1/2 left-3 " + icon}></i>
 				<DatePicker key={'asd3'}
+					id='fnacimiento'
 					name='Fecha de nacimiento'
 					dateFormat="dd/MM/yyyy" 
 					selected={startDate.date} 
