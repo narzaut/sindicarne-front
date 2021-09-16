@@ -8,7 +8,7 @@ export function SelectInput({icon, options, placeholder, errors, register, value
 	return (
 		<div className='py-3 '>
 			<p>{placeholder}</p>
-			<div className='flex  pb-4 flex-col text-center  '>
+			<div className='flex  pb-4 flex-col  '>
 				<div className={'relative '}>
 					<i class={"text-gray-700 absolute top-1/2 transform -translate-y-1/2 left-3 " + icon}></i>
 					<select 
