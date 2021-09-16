@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/sindicarne-front/static/css/main.855b26c1.chunk.css",
-    "main.js": "/sindicarne-front/static/js/main.602f8f3d.chunk.js",
-    "main.js.map": "/sindicarne-front/static/js/main.602f8f3d.chunk.js.map",
+    "main.js": "/sindicarne-front/static/js/main.8afe19b2.chunk.js",
+    "main.js.map": "/sindicarne-front/static/js/main.8afe19b2.chunk.js.map",
     "runtime-main.js": "/sindicarne-front/static/js/runtime-main.f2fd9e34.js",
     "runtime-main.js.map": "/sindicarne-front/static/js/runtime-main.f2fd9e34.js.map",
     "static/css/2.169d8ab9.chunk.css": "/sindicarne-front/static/css/2.169d8ab9.chunk.css",
@@ -18,6 +18,6 @@
     "static/css/2.169d8ab9.chunk.css",
     "static/js/2.9777fbe2.chunk.js",
     "static/css/main.855b26c1.chunk.css",
-    "static/js/main.602f8f3d.chunk.js"
+    "static/js/main.8afe19b2.chunk.js"
   ]
 }
