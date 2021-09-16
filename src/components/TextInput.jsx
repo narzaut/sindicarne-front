@@ -32,13 +32,12 @@ export function TextInput({icon, type, errors, register, value, placeholder, req
 	
 	return (
 		<div className='py-3'>
-			<p>{placeholder}</p>
 			<div className='flex  flex-col relative'>
 				<i class={"text-gray-700 absolute top-1/2 transform -translate-y-1/2 left-3 " + icon}></i>
 				<div className='w-full'>
 					<div className='flex'>
-						<label>
-							{value}
+						<label className='flex flex-col'>
+							{placeholder}
 							<input
 								name={value}
 								{...reg}
