@@ -18,6 +18,7 @@ export function DateInput({icon, startDate, setStartDate}) {
 			<div className='relative'>
 				<i class={"z-10 text-gray-700 absolute top-1/2 transform -translate-y-1/2 left-3 " + icon}></i>
 				<DatePicker key={'asd3'}
+					name={value}
 					dateFormat="dd/MM/yyyy" 
 					selected={startDate.date} 
 					className={`py-1 outline-none border-4 border-transparent focus-border-green input-color text-gray-800 font-semibold rounded w-60  text-center ${errorBorder}`}

@@ -14,6 +14,7 @@ export function SelectInput({icon, options, placeholder, errors, register, value
 					<select 
 						className={`w-60 py-1 flex text-center  mx-auto text-gray-800 font-semibold border-4 border-transparent input-color  rounded  pl-2 ${errorBorder}`}
 						{...register(value, { required: required })}
+						name={value}
 					>
 						<option  value='' hidden selected></option>
 						{options.map(option => {

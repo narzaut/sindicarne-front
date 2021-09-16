@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
 //Custom components
-import { TextInput } from "./FormInput";
+import { TextInput } from "./TextInput";
 import { SelectInput } from "./SelectInput";
 import { DateInput } from "./DateInput"
 //Custom helpers
