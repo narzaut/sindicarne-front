@@ -55,6 +55,10 @@ html, body{
 	text-shadow: 1px 1px 2px black;
 }
 
+.text-shadow-sm{
+	text-shadow: 1px 1px 1px black;
+}
+
 .text-green{
 	color: #2594BC;
 }
