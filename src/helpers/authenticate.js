@@ -1,7 +1,7 @@
 export const authenticate = async () => {
 	let token;
 
-	await fetch(`http://64.225.47.18:3030/api/auth`, {
+	await fetch(`http://api.sindicarne.com.ar/auth`, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
