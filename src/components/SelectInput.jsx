@@ -12,7 +12,7 @@ export function SelectInput({icon, options, placeholder, errors, register, value
 				<div className={'relative '}>
 					<i class={"text-gray-700 absolute top-1/2 transform -translate-y-1/2 left-3 " + icon}></i>
 					<select 
-						className={`w-60 py-1 flex text-center  mx-auto text-gray-800 font-semibold border-4 border-transparent input-color  rounded  pl-2 ${errorBorder}`}
+						className={`outline-none w-60 py-1 flex text-center  mx-auto text-gray-800 font-semibold border-4 border-transparent input-color  rounded  pl-2 ${errorBorder}`}
 						{...register(value, { required: required })}
 						name={value}
 					>

@@ -89,7 +89,7 @@ export const InscriptionForm = () => {
 	return (
 		<div className='flex flex-col w-full  items-center justify-center pb-10 mt-6'>
 		
-			<form onChange={() => {setMessage({message, status:false})}} className=' rounded-md glass card-shadow w-5/6 lg:w-1/2   pb-10 py-6 my-2 lg:my-6 flex flex-col items-center justify-center ' onSubmit={ handleSubmit(onSubmit)}>
+			<form onChange={() => { if (!message.success) setMessage({message, status:false}) }} className=' rounded-md glass card-shadow w-5/6 lg:w-1/2   pb-10 py-6 my-2 lg:my-6 flex flex-col items-center justify-center ' onSubmit={ handleSubmit(onSubmit)}>
 				<p className='mb-2 lg:mb-6 lg:text-lg text-gray-800  font-bold border-b-4 border-green rounded max-w-max'>Formulario de inscripción</p>
     		<TextInput icon={'fas fa-user'} key={'asd'} value='nombrePostulante' errors={errors.nombrePostulante}  placeholder='Nombre' register={register} required={true}/>
     		<TextInput icon={'fas fa-user'} key={'asd1'} value='apellido' errors={errors.apellido} placeholder='Apellido' register={register}  required={true}/>
