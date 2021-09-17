@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-
 //Custom components
 import { TextInput } from "./TextInput";
 import { SelectInput } from "./SelectInput";
 import { DateInput } from "./DateInput"
+import { SubmitMessage } from "./SubmitMessage";
 //Custom helpers
 import { dateToSql } from "../helpers/dateToSql";
 import { authenticate } from "../helpers/authenticate"
@@ -19,15 +19,13 @@ export const InscriptionForm = () => {
 		validated: false
 	});
 	const [disabled, setDisabled] = useState(false)
+	const [hidden, setHidden] = useState(false)
 	const [message, setMessage] = useState({
 		status:false,
 		success:false,
 		message:''
 	})
-
-	//Conditional css
-	let messageStyle;
-	message.success == true ? messageStyle = 'text-green-400' : messageStyle = ' text-red-400'
+	const [loading, setLoading] = useState(false)
 	//Submit event handler
 	const onSubmit = async (data, e) => {
 		e.preventDefault();
@@ -39,31 +37,42 @@ export const InscriptionForm = () => {
 		if (fechaNacimiento.validated) {
 			data.fechaNacimiento = dateToSql(fechaNacimiento.date)
 			setDisabled(true)
+			setLoading(true)
 			//Validate token
 			const token = await authenticate()
 			if (token) {
 				//Post to db
+				
 				postRequest(token, data)
 				.then(response => {return response.json() })
 				.then(json => {
 					if (json.status == 200){
 						//Send email
-						setMessage({message, success: true, status:true, message:'Se ha realizado la inscripción.'})
+						console.log('Added to DB')
+						setMessage({message, success: true, status:true, message:'INSCRIPCIÓN REALIZADA'})
+
 						emailRequest(data)
 						.then(response => {return response.json()})
 						.then(json => {
 							console.log(json.message)
 						})
+						return
+
 					}else if (json.status==400){
-						setMessage({message, success: false, status:true, message:'Esta persona ya se encuentra inscripta.'})
+						setMessage({message, success: false, status:true, message:'PERSONA YA INSCRIPTA'})
 					}
 					console.log(json.message)
+					setLoading(false)
+
 				})
 				.catch(error => {
+					setLoading(false)
+				setMessage({message, success:false,  status:true, message:'Error. Intente más tarde.'})
+
 					
 				})
 			} else{
-				setMessage({message, success:false,  status:true, message:'Hubo un error en el registro. Intente más tarde.'})
+				setMessage({message, success:false,  status:true, message:'Hubo un error. Intente más tarde.'})
 			}
 		}	else {
 			setDisabled(false)
@@ -85,7 +94,7 @@ export const InscriptionForm = () => {
 	return (
 		<div className='flex flex-col w-full  items-center justify-center pb-10 mt-6'>
 		
-			<form onChange={() => {setMessage({message, status:false})}} className='mt-10 rounded-md glass card-shadow w-5/6 lg:w-1/2 py-4  lg:py-10  flex flex-col items-center justify-center ' onSubmit={ handleSubmit(onSubmit)}>
+			<form onChange={() => {setMessage({message, status:false})}} className=' rounded-md glass card-shadow w-5/6 lg:w-1/2   pb-10 py-6 my-2 lg:my-6 flex flex-col items-center justify-center ' onSubmit={ handleSubmit(onSubmit)}>
 				<p className='mb-2 lg:mb-6 lg:text-lg text-gray-800  font-bold border-b-4 border-green rounded max-w-max'>Formulario de inscripción</p>
     		<TextInput icon={'fas fa-user'} key={'asd'} value='nombrePostulante' errors={errors.nombrePostulante}  placeholder='Nombre' register={register} required={true}/>
     		<TextInput icon={'fas fa-user'} key={'asd1'} value='apellido' errors={errors.apellido} placeholder='Apellido' register={register}  required={true}/>
@@ -95,8 +104,9 @@ export const InscriptionForm = () => {
     		<TextInput icon={'fas fa-phone-alt'} type={'tel'} key={'asd5'} value='telPostulante' errors={errors.telPostulante}  placeholder='Teléfono / Celular' register={register} required={true}/>
     		<TextInput icon={'fas fa-building'} key={'asd6'} value='empresaPostulante' errors={errors.empresaPostulante} placeholder='Empresa' register={register} required={true} />
 				<SelectInput icon={'fas fa-users'} placer={'Grupo familiar'} key={'asd7'} options={grupoFamiliarOptions} placeholder='Grupo familiar' value='estadocivil' errors={errors.estadocivil} register={register} required={true} />				
-				{message.status == true ? <p className={`text-shadow-sm tracking-wide text-sm lg:text-lg font-bold py-4 ${messageStyle}`}>{message.message}</p> : ''}
-				<button disabled = {disabled}  className='mt-4  tracking-wider  cursor-pointer text-shadow transition hover-bg-green rounded  px-4 py-2 bg-green text-gray-100 font-semibold hover-press-animation hover:shadow-2xl' type="submit">INSCRIBIRSE</button>
+				{!message.success ? <button className='mt-4 w-32 h-10 tracking-wider  flex items-center justify-center cursor-pointer transition hover-bg-green rounded  px-4 py-2 bg-green text-gray-100 font-semibold hover-press-animation hover:shadow-2xl animation-spin' type="submit">{	loading ? <div class="lds-dual-ring	"/> : <span className='text-shadow'>INSCRICIRSE</span> }</button> : ''}
+				<SubmitMessage message={message} />
+				
 			</form>
 		</div>
 	)

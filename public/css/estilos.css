@@ -107,3 +107,25 @@ input[type="number"] {
 .card-shadow{
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
+
+
+.lds-dual-ring {
+
+  display: block;
+  width: 24px;
+  height: 24px;
+  margin: 8px;
+  border-radius: 99%;
+  border: 6px solid #fff;
+  border-color: #003560 transparent #003560 transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
