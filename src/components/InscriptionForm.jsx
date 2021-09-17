@@ -18,14 +18,14 @@ export const InscriptionForm = () => {
 		date: new Date(),
 		validated: false
 	});
-	const [disabled, setDisabled] = useState(false)
-	const [hidden, setHidden] = useState(false)
 	const [message, setMessage] = useState({
 		status:false,
 		success:false,
 		message:''
 	})
+	const [disabled, setDisabled] = useState(false)
 	const [loading, setLoading] = useState(false)
+	
 	//Submit event handler
 	const onSubmit = async (data, e) => {
 		e.preventDefault();
@@ -42,7 +42,6 @@ export const InscriptionForm = () => {
 			const token = await authenticate()
 			if (token) {
 				//Post to db
-				
 				postRequest(token, data)
 				.then(response => {return response.json() })
 				.then(json => {
@@ -50,7 +49,6 @@ export const InscriptionForm = () => {
 						//Send email
 						console.log('Added to DB')
 						setMessage({message, success: true, status:true, message:'INSCRIPCIÓN REALIZADA'})
-
 						emailRequest(data)
 						.then(response => {return response.json()})
 						.then(json => {
@@ -63,16 +61,13 @@ export const InscriptionForm = () => {
 					}
 					console.log(json.message)
 					setLoading(false)
-
 				})
 				.catch(error => {
 					setLoading(false)
-				setMessage({message, success:false,  status:true, message:'Error. Intente más tarde.'})
-
-					
+					setMessage({message, success:false,  status:true, message:'ERROR. Intente más tarde.'})			
 				})
 			} else{
-				setMessage({message, success:false,  status:true, message:'Hubo un error. Intente más tarde.'})
+				setMessage({message, success:false,  status:true, message:'ERROR. Intente más tarde.'})			
 			}
 		}	else {
 			setDisabled(false)
@@ -104,7 +99,7 @@ export const InscriptionForm = () => {
     		<TextInput icon={'fas fa-phone-alt'} type={'tel'} key={'asd5'} value='telPostulante' errors={errors.telPostulante}  placeholder='Teléfono / Celular' register={register} required={true}/>
     		<TextInput icon={'fas fa-building'} key={'asd6'} value='empresaPostulante' errors={errors.empresaPostulante} placeholder='Empresa' register={register} required={true} />
 				<SelectInput icon={'fas fa-users'} placer={'Grupo familiar'} key={'asd7'} options={grupoFamiliarOptions} placeholder='Grupo familiar' value='estadocivil' errors={errors.estadocivil} register={register} required={true} />				
-				{!message.success ? <button className='mt-4 w-32 h-10 tracking-wider  flex items-center justify-center cursor-pointer transition hover-bg-green rounded  px-4 py-2 bg-green text-gray-100 font-semibold hover-press-animation hover:shadow-2xl animation-spin' type="submit">{	loading ? <div class="lds-dual-ring	"/> : <span className='text-shadow'>INSCRICIRSE</span> }</button> : ''}
+				{!message.success ? <button className='mt-4 w-32 h-10 tracking-wider  flex items-center justify-center cursor-pointer transition hover-bg-green rounded  px-4 py-2 bg-green text-gray-100 font-semibold hover-press-animation hover:shadow-2xl  text-shadow' type="submit">{	loading ? <div class="lds-dual-ring	text-shadow "/> : <span className='text-shadow'>INSCRIBIRSE</span> }</button> : ''}
 				<SubmitMessage message={message} />
 				
 			</form>
