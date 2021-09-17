@@ -99,7 +99,7 @@ export const InscriptionForm = () => {
     		<TextInput icon={'fas fa-phone-alt'} type={'tel'} key={'asd5'} value='telPostulante' errors={errors.telPostulante}  placeholder='Teléfono / Celular' register={register} required={true}/>
     		<TextInput icon={'fas fa-building'} key={'asd6'} value='empresaPostulante' errors={errors.empresaPostulante} placeholder='Empresa' register={register} required={true} />
 				<SelectInput icon={'fas fa-users'} placer={'Grupo familiar'} key={'asd7'} options={grupoFamiliarOptions} placeholder='Grupo familiar' value='estadocivil' errors={errors.estadocivil} register={register} required={true} />				
-				{!message.success ? <button className='mt-4 w-32 h-10 tracking-wider  flex items-center justify-center cursor-pointer transition hover-bg-green rounded  px-4 py-2 bg-green text-gray-100 font-semibold hover-press-animation hover:shadow-2xl  text-shadow' type="submit">{	loading ? <div class="lds-dual-ring	text-shadow "/> : <span className='text-shadow'>INSCRIBIRSE</span> }</button> : ''}
+				{!message.success ? <button disabled={disabled} className='mt-4 w-32 h-10 tracking-wider  flex items-center justify-center cursor-pointer transition hover-bg-green rounded  px-4 py-2 bg-green text-gray-100 font-semibold hover-press-animation hover:shadow-2xl  text-shadow' type="submit">{	loading ? <div class="lds-dual-ring	text-shadow "/> : <span className='text-shadow'>INSCRIBIRSE</span> }</button> : ''}
 				<SubmitMessage message={message} />
 				
 			</form>
