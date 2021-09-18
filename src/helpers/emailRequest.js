@@ -1,7 +1,7 @@
 
 export const emailRequest = (data) => {
 	return (
-		fetch(`https://api.sindicarne.com.ar/send-email`, {
+		fetch(`//localhost:3030/send-email`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
