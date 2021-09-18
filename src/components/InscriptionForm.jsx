@@ -42,7 +42,7 @@ export const InscriptionForm = () => {
 			const token = await authenticate()
 			if (token) {
 				//Post to db
-				postRequest(token, data)
+				postRequest(token.token, data)
 				.then(response => {return response.json() })
 				.then(json => {
 					if (json.status == 200){

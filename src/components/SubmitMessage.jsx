@@ -16,7 +16,7 @@ export const SubmitMessage = ( { message }) => {
 						</div>
 					: message.status == true && message.success == false ? 
 						<div className='flex items-center justify-center'>
-							<i class="text-shadow-sm text-lg text-red-400 pr-2 fas fa-exclamation-circle"></i> 
+							<i class="text-shadow-sm text-lg text-red-500 pr-2 fas fa-exclamation-circle"></i> 
 							<p className={`text-red-400 text-shadow-sm tracking-wide  lg:text-lg font-bold py-4`}>{message.message}</p> 
 						</div>
 					: 

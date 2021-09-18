@@ -7,22 +7,18 @@ export const authenticate = async () => {
 			'Content-Type': 'application/json',
 		},
 		body: JSON.stringify({
-			user: "postulante"
+			user: "admin",
+			password:"itec2021"
 		})	
 	})
 	.then(response => {
 		return response.json()
 	})
 	.then(json => {
-		if (json.ok == true) {
-			token = json.token
-		} else {
-			token = null
-		}
+		token = json
 	})
 	.catch(error => {
-		token = null
-		return null
+		token = error
 	})
 	return token
 }
