@@ -68,6 +68,8 @@ export const InscriptionForm = () => {
 				})
 			} else{
 				setMessage({message, success:false,  status:true, message:'ERROR. Intente más tarde.'})			
+				setLoading(false)
+
 			}
 		}	else {
 			setDisabled(false)
