@@ -2,7 +2,7 @@ import { dateToSql } from "./dateToSql";
 
 export const postRequest = (token, data) => {
 	return (
-		fetch(`//localhost:3030/postulantes`, {
+		fetch(`https://api.sindicarne.com.ar/postulantes`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
